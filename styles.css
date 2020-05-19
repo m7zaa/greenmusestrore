@@ -1,0 +1,287 @@
+#root {
+  flex: 1;
+}
+
+#categoryCheckboxDiv {
+  text-align: center;
+  margin-top: 15px;
+}
+
+h1.categoryHeader {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 40px;
+  border-bottom: 1px solid gray;
+  position: relative;
+}
+
+.menuItemMainDiv {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: 10%;
+}
+
+.menuItemCard {
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 7px;
+  padding-left: 20px;
+  position: relative;
+  min-height: 15%;
+  min-width: 90%;
+}
+
+.imgDiv {
+  display: block;
+}
+
+.itemImg {
+  height: 150px;
+  width: 150px;
+  object-fit: scale-down;
+}
+
+.productName {
+  font-size: 15px;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 20px;
+  top: 1px;
+  right: 10px;
+  position: absolute;
+}
+
+.productDescription {
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.productPotencyMeasure {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.categoryType {
+  display: flex;
+  flex-direction: row;
+}
+
+.categoryCheckbox {
+  margin: 5px;
+  padding: 15px;
+  font-size: 15px;
+}
+
+.categoryCheckboxLabel {
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.autoScrollCheckbox {
+  color: black;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.toggleHeaderCheckbox {
+  color: black;
+  font-size: 10px;
+  margin-right: 10px;
+}
+
+.menuBodyTopPadding {
+  padding-top: 200px;
+}
+
+#menuBody {
+  padding-bottom: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#menuHeader {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 10px 16px;
+  background-color: white;
+  z-index: 1;
+  color: black;
+}
+
+#cartIcon {
+  padding-right: 5px;
+}
+
+.cartIcon {
+  margin: 15px;
+}
+.hidden {
+  display: none;
+}
+
+.shoppingCartPopup-overlay,
+.profilePopup-overlay {
+  /*Hides pop-up when there is no "active" class*/
+  visibility: hidden;
+  position: absolute;
+  background: #ffffff;
+  border: 3px solid #666666;
+  width: 50%;
+  height: 400px;
+  left: 25%;
+}
+
+.shoppingCartPopup-overlay.active,
+.profilePopup-overlay.active {
+  /*displays pop-up when "active" class is present*/
+  visibility: visible;
+  text-align: center;
+  height: auto;
+  min-height: 400px;
+  width: auto;
+  min-width: 600px;
+}
+
+.shoppingCartPopup-content,
+.profilePopup-content {
+  /*Hides pop-up content when there is no "active" class */
+  visibility: hidden;
+}
+
+.shoppingCartPopup-content.active,
+.profilePopup-content.active {
+  /*Shows pop-up content when "active" class is present */
+  visibility: visible;
+}
+
+button {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 30px;
+  margin: 0.2rem;
+  font-size: 1rem;
+  background: #ffffff;
+  border: 1px solid #666666;
+}
+
+button:hover {
+  border: 1px solid #666666;
+  background: #666666;
+  color: #ffffff;
+}
+
+#cartItemLine {
+  display: flex;
+  justify-content: space-between;
+  padding: 19px;
+}
+
+#cartPriceSpan {
+  display: flex;
+  flex-direction: row;
+}
+
+.cartButtons {
+  display: flex;
+  justify-content: center;
+  padding: 19px;
+}
+
+#state {
+  width: 40px;
+}
+
+#zip-code {
+  width: 80px;
+}
+
+#city {
+  width: 100px;
+}
+
+#notetoretailer {
+  width: 60%;
+}
+
+#contactFormArea {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.removeCartItemButton {
+  color: red;
+  border-radius: 110px;
+  border: 0px;
+}
+
+.removeCartItemButton:hover {
+  border: 1px solid #666666;
+  background: red;
+}
+
+#cartItemNumber {
+  display: inline;
+}
+
+#deliverOrder,
+#canPayPayment {
+  margin-left: 15px;
+}
+#orderOptions,
+#paymentOptions {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.menuItemCard button {
+  border-radius: 15px;
+}
+#submitQuantity {
+  display: flex;
+  flex-direction: row;
+}
+#cartMessage {
+  color: red;
+}
+
+.project-menu {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.project-menu li {
+  display: inline-block;
+}
+
+.project-menu li a {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #444;
+  border-radius: 20px;
+  color: #444;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 4px;
+  padding: 6px 15px;
+  text-transform: capitalize;
+  transition: all 0.3s ease 0s;
+}
+
+.project-menu li a.active,
+.project-menu li a:hover {
+  border-color: #3ec1d5;
+  background: #3ec1d5;
+  color: #fff;
+  text-decoration: none;
+}
+.project-menu li a {
+  padding: 8px 12px;
+  margin: 10px 4px;
+}

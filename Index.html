@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8' />
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css'>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <!-- <link href='https://omcodex.blob.core.windows.net/webmenu/webmenustyles.css' rel='stylesheet' type='text/css'> -->
+  <!-- <script id='webmenuscript' src='https://omcodex.blob.core.windows.net/webmenu/webmenuscripts.js'></script> -->
+  <link href='styles.css' rel='stylesheet' type='text/css'>
+  <script src='scripts.js'></script>
+
+  <script>
+    $(document).ready(function () { var documentHeight = $(document).height(); $('#webmenuscript').attr('data-height', documentHeight); });
+    //**********  CUSTOMIZE THESE VARIABLES *************//
+    const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
+    const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb'; //YOUR STORE KEY
+    const scrollSpeed = 50; //SCROLL SPEED
+    const defaultMenuImage = 'https://svgsilh.com/svg/1483798.svg'; //DEFAULT MENU IMAGE
+    const turnOnOnlineOrdering = true;  //NOT YET IMPLEMENTED
+    //Turn on/off CanPay Payment functionality
+    const useCanPay = true;
+        //**********  CUSTOMIZE THESE VARIABLES *************//
+  </script>
+  <script src='https://use.fontawesome.com/releases/v5.13.0/js/all.js' data-auto-replace-svg='nest'></script>
+  <title>Menu</title>
+</head>
+
+<body>
+  <div id='root' class='container-fluid'>
+    <div id='menuHeader'>
+      <div class='menu-items text-right'>
+        <input type='checkbox' id='scrollCheckbox' name='scrollCheckbox'>
+        <label for='scrollCheckbox' class='autoScrollCheckbox'>Auto Scroll</label>
+        <input type='checkbox' id='toggleHeaderCheckbox' name='toggleHeaderCheckbox'>
+        <label for='toggleHeaderCheckbox' class='toggleHeaderCheckbox'>Hide Header</label>
+        <div id='onlineOrderingMenuButtons' class='hidden'>
+          <button class='openCart cartIcon row'>
+            <i class='fas fa-shopping-cart hidden openCart col-6' id='cartIcon'></i>
+            <p id='cartItemNumber' class='col-6'></p>
+          </button>
+
+          <button class='openProfile user'>
+            <i class="fas fa-user-alt openProfile"></i>
+          </button>
+
+        </div>
+      </div>
+
+
+
+      <ul class="project-menu" id="product-menu-ul">
+        <li>
+          <a class="active" id="showAll" onclick=showAllItems()>All</a>
+        </li>
+      </ul>
+
+      <div class="profilePopup-overlay">
+        <div class="profilePopup-content">
+          <h2>User Details</h2>
+          <div id='profileContactFormArea' class='profileContactFormArea hidden'>
+
+            <form method='post' class='edit-contact' id='edit-contact-form'>
+
+              <div class='form-group'>
+                <label for='first-name'>First Name </label>
+                <input id='update-first-name' name='first-name' type='text'>
+                <label for='last-name'>Last Name </label>
+                <input id='update-last-name' name='last-name' type='text'>
+              </div>
+
+              <div class='form-group'>
+                <label for='phone-number'>Phone Number </label>
+                <input id='update-phone-number' name='phone-number' type='text'>
+                <label for='email-address'>Email </label>
+                <input id='update-email-address' name='email-address' type='text'>
+              </div>
+
+              <div class='form-group'>
+                <label for='street-address1'>Street Address </label>
+                <input id='update-street-address1' name='street-address1' type='text'>
+                <label for='street-address2'>Street Address 2</label>
+                <input id='update-street-address2' name='street-address2' type='text'>
+              </div>
+              <div class='form-group'>
+                <label for='city'>City </label>
+                <input id='update-city' name='city' type='text'>
+
+                <label for='state'>State </label>
+                <input id='update-state' name='state' type='text' value='OR'>
+
+                <label for='zip-code'>Zip Code </label>
+                <input id='update-zip-code' name='zip-code' type='text'>
+              </div>
+              <button type='button' class='submit-button updateInfo' onclick='updateContactInfo()'>Save</button>
+              <button type='button' class='submit-button deleteContactInfo' onclick='deleteContactInfo()'>Remove All
+                Details</button>
+            </form>
+            <button id='showHistory'>Show Order History</button>
+          </div>
+          <div id='orderHistoryArea' class='hidden'>
+            <table class="table" id='orderHistory'>
+              <thead>
+                <tr>
+                  <th scope="col">Order #</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody id='orderHistoryList'>
+              </tbody>
+            </table>
+            <button id='profileBack'>Back</button>
+          </div>
+          <button class="closeProfile">Close</button>
+        </div>
+      </div>
+      <div class='shoppingCartPopup-overlay'>
+        <div class='shoppingCartPopup-content'>
+          <h2>Shopping Cart</h2>
+          <div id='shoppingCartModal'></div>
+          <h5 class='empty-cart'>Your shopping cart is empty</h5>
+          <div class='cartButtons'>
+            <button class='check-out hidden'>Check Out</button>
+            <button class='closeCart'>Close</button>
+          </div>
+        </div>
+        <div id='contactFormArea' class='contactFormArea hidden'>
+          <div id='cartMessage'></div>
+          <div id='checkoutTotal'></div>
+          <form>
+            <fieldset data-role="controlgroup" data-type="horizontal" id='orderOptions'>
+              <input type="radio" name="orderOptions" id="pickupOrder" value="pickup" checked="checked">
+              <label for="pickupOrder">Pickup</label>
+              <input type="radio" name="orderOptions" id="deliverOrder" value="delivery">
+              <label for="deliverOrder">Delivery</label>
+            </fieldset>
+          </form>
+          <form method='post' id='submit-order-form'>
+            <div class='form-group'>
+              <label for='first-name'>First Name </label>
+              <input id='first-name' name='first-name' type='text' required>
+              <label for='last-name'>Last Name </label>
+              <input id='last-name' name='last-name' type='text' required>
+            </div>
+            <div class='form-group'>
+              <label for='phone-number'>Phone Number </label>
+              <input id='phone-number' name='phone-number' type='text' required>
+              <label for='email-address'>Email </label>
+              <input id='email-address' name='email-address' type='text' required>
+            </div>
+            <div class='form-group deliveryDetails hidden'>
+              <label for='street-address1'>Street Address </label>
+              <input id='street-address1' name='street-address1' type='text'>
+              <label for='street-address2'>Street Address 2</label>
+              <input id='street-address2' name='street-address2' type='text'>
+            </div>
+            <div class='form-group deliveryDetails hidden'>
+              <label for='city'>City </label>
+              <input id='city' name='city' type='text'>
+
+              <label for='state'>State </label>
+              <input id='state' name='state' type='text' value='OR'>
+
+              <label for='zip-code'>Zip Code </label>
+              <input id='zip-code' name='zip-code' type='text'>
+            </div>
+            <div class='form-group'>
+              <label for='notetoretailer'>Notes </label>
+              <input id='notetoretailer' id='notetoretailer' name='notetoretailer' type='text'>
+            </div>
+
+            <fieldset data-role="controlgroup" data-type="horizontal" id='paymentOptions'>
+              <input type="radio" name="paymentOptions" id="cashPayment" value="cash" checked="checked">
+              <label for="cashPayment">Cash</label>
+
+              <input type="radio" name="paymentOptions" id="canPayPayment" class='canPay hidden' value="canPay">
+              <label for="canPayPayment" class='canPay hidden'>CanPay</label>
+            </fieldset>
+            <div class='form-group canPayPin hidden'>
+              <label for='canPayPin'>7-Digit CanPay Pin </label>
+              <input id='canPayPin' name='canPayPin' type='text'>
+            </div>
+
+            <div class='form-group'>
+              <input type='checkbox' id='saveContactInfo' name='saveContactInfo'>
+              <label for='saveContactInfo'>Save Contact Info (Only check on your personal devices.)</label>
+            </div>
+
+            <button type='button' class='place-order'>Place Order</button>
+            <button type='button' class='cancel-order'>Cancel Order</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id='menuBody' class='menuBodyTopPadding'></div>
+  </div>
+</body>
+
+</html>
