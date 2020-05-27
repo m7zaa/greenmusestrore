@@ -554,10 +554,26 @@
     }
 
     /* small mobile :320px. */
+    @media (min-width: 1920px) {
+      .work-right-text {
+        padding: 150px 150px;
+      }
+    }
+
+    /* Normal desktop :992px. */
+    @media (min-width: 992px) and (max-width: 1169px) {
+      .menu-area {
+        display: block;
+        position: relative;
+        flex-direction: column;
+      }
+    }
+
+    /* small mobile :320px. */
     @media (max-width: 767px) {
       .menu-area {
         padding-top: 80px;
-        position: relative;
+        position: flex;
         z-index: 500;
         display: inline-block;
         flex-direction: column;
