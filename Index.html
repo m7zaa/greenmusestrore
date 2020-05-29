@@ -4,33 +4,6 @@
 
 	
 <head>
-	 <meta charset=utf-8 />
-    <title>ColorBox demo</title>
-    <link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" />
-  </head>
-  <body>
-    <h1>Hello, there!</h1>
-    <h2>This is some content</h2>
-    <p>The popup will open in <span id="seconds">5</span> seconds</p>
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="http://www.jacklmoore.com/colorbox/jquery.colorbox.js"></script>
-    <script>
-      function openColorBox(){
-        $.colorbox({iframe:true, width:"80%", height:"80%", href: "http://www.sitepoint.com"});
-      }
-      
-      function countDown(){
-        seconds--
-        $("#seconds").text(seconds);
-        if (seconds === 0){
-          openColorBox();
-          clearInterval(i);
-        }
-      }
-
-      var seconds = 5,
-          i = setInterval(countDown, 1000);
 
   <title>Green Muse Menu</title>
   <meta charset="utf-8">
