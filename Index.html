@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
-
-  <title>Green Muse Online Store</title>
+  <title>Green Muse Menu</title>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
@@ -14,10 +11,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
     integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
     crossorigin="anonymous"></script>
-  <link href='https://fonts.googleapis.com/css?family=Raleway:600,900,400' rel='stylesheet' type='text/css'>
-  
-
-	
   <style>
     @charset "UTF-8";
 
@@ -569,26 +562,6 @@
         /* display: inline-block; */
         flex-direction: column;
       }
-    }
-
-    /* Normal desktop :992px. */
-    @media (min-width: 992px) and (max-width: 1169px) {
-      .menu-area {
-        display: inline-block;
-        position: relative;
-        flex-direction: column;
-      }
-    }
-
-    /* small mobile :320px. */
-    @media (max-width: 767px) {
-      .menu-area {
-        padding-top: 80px;
-        position: flex;
-        z-index: 500;
-        display: inline-block;
-        flex-direction: column;
-      }
 
       .main {
         display: flex;
@@ -719,15 +692,6 @@
         display: flex;
         flex-direction: column;
       }
-	    
-    .quantityForm button {
-        margin: 0;
-        padding: 5px;
-      }
-
-      .productModalContent {
-        position: absolute
-      }
 
       #label-update-city,
       #label-update-first-name {
@@ -738,6 +702,15 @@
     @media (max-width: 992px) {
       #update-state {
         width: 40px;
+      }
+
+      .quantityForm button {
+        margin: 0;
+        padding: 5px;
+      }
+
+      .productModalContent {
+        position: absolute
       }
 
       #label-update-city,
@@ -1023,7 +996,6 @@
     #deliveryCanPayMessage {
       color: #008000
     }
-    
   </style>
   <script>
     //**********  CUSTOMIZE THESE VARIABLES *************//
@@ -1032,7 +1004,7 @@
     //test webguid key
     // const webguid = '9e8d4cd4-bb09-4dd2-9bc8-39eaf7ade324';
     const headerImage = "https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/04/cropped-GREEN_MUSE_LOGO_VERSION_2.png?w=1366&ssl=1"; //Image in header
-    const defaultMenuImage = 'https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/05/StoreStockPhoto.jpeg?ssl=1&resize=438%2C438'; //DEFAULT MENU IMAGE
+    const defaultMenuImage = 'https://svgsilh.com/svg/1483798.svg'; //DEFAULT MENU IMAGE
     const turnOnOnlineOrdering = true;  //NOT YET IMPLEMENTED
     //Turn on/off CanPay Payment functionality
     const useCanPay = true;
@@ -1230,7 +1202,7 @@
                   <input id='zip-code' name='zip-code' type='text'>
                 </div>
                 <div class='form-group'>
-                  <label for='notetoretailer'>Time of pickup or delivery details </label>
+                  <label for='notetoretailer'>Notes </label>
                   <input id='notetoretailer' name='notetoretailer' type='text'>
                 </div>
                 <div class='form-group'>
@@ -1806,7 +1778,7 @@
           $('#canPayPayment').click();
           $('.cashOption').addClass('hide');
         }
-        document.getElementById('deliveryCanPayMessage').innerHTML = 'Online payments are processed securely through CanPay. Click <a href="https://www.canpaydebit.com/consumer/start/" target="_blank">here</a> to enroll.'
+        document.getElementById('deliveryCanPayMessage').innerHTML = 'CanPay must be used for all deliveries. Click <a href="https://www.canpaydebit.com/" target="_blank">here</a> for details.'
       });
 
       $("#pickupOrder").on("click", function () {
@@ -2170,9 +2142,6 @@
         document.getElementById('cartItemNumber').innerHTML = '(' + cartItems.length + ')';
       }
     });
-
-
-    
   </script>
 </body>
 
