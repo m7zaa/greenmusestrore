@@ -715,6 +715,15 @@
         display: flex;
         flex-direction: column;
       }
+	    
+    .quantityForm button {
+        margin: 0;
+        padding: 5px;
+      }
+
+      .productModalContent {
+        position: absolute
+      }
 
       #label-update-city,
       #label-update-first-name {
@@ -1052,7 +1061,7 @@
     <!-- Product Description Modal -->
     <div class='modal' tabindex="-1" role="dialog" id="productModal">
       <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
+        <div class="modal-content productModalContent">
           <div class="modal-header text-center d-block">
             <button id='closeproductModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
