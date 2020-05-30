@@ -496,6 +496,7 @@
     .mobile-nav-active .mobile-nav-toggle i {
       color: #fff;
     }
+
     /*--------------------------------------------------------------
       # Menu
       --------------------------------------------------------------*/
@@ -566,6 +567,26 @@
         position: relative;
         z-index: 500;
         /* display: inline-block; */
+        flex-direction: column;
+      }
+    }
+
+    /* Normal desktop :992px. */
+    @media (min-width: 992px) and (max-width: 1169px) {
+      .menu-area {
+        display: inline-block;
+        position: relative;
+        flex-direction: column;
+      }
+    }
+
+    /* small mobile :320px. */
+    @media (max-width: 767px) {
+      .menu-area {
+        padding-top: 80px;
+        position: flex;
+        z-index: 500;
+        display: inline-block;
         flex-direction: column;
       }
 
@@ -698,6 +719,15 @@
         display: flex;
         flex-direction: column;
       }
+	    
+    .quantityForm button {
+        margin: 0;
+        padding: 5px;
+      }
+
+      .productModalContent {
+        position: absolute
+      }
 
       #label-update-city,
       #label-update-first-name {
@@ -708,15 +738,6 @@
     @media (max-width: 992px) {
       #update-state {
         width: 40px;
-      }
-
-      .quantityForm button {
-        margin: 0;
-        padding: 5px;
-      }
-
-      .productModalContent {
-        position: absolute
       }
 
       #label-update-city,
@@ -1002,7 +1023,9 @@
     #deliveryCanPayMessage {
       color: #008000
     }
+    
   </style>
+  <script>
   <script>
     //**********  CUSTOMIZE THESE VARIABLES *************//
     const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
