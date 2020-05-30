@@ -1026,7 +1026,6 @@
     
   </style>
   <script>
-  <script>
     //**********  CUSTOMIZE THESE VARIABLES *************//
     const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
     const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb'; //YOUR STORE KEY
@@ -1231,7 +1230,7 @@
                   <input id='zip-code' name='zip-code' type='text'>
                 </div>
                 <div class='form-group'>
-                  <label for='notetoretailer'>Notes </label>
+                  <label for='notetoretailer'>Time of pickup or delivery details </label>
                   <input id='notetoretailer' name='notetoretailer' type='text'>
                 </div>
                 <div class='form-group'>
@@ -1807,7 +1806,7 @@
           $('#canPayPayment').click();
           $('.cashOption').addClass('hide');
         }
-        document.getElementById('deliveryCanPayMessage').innerHTML = 'CanPay must be used for all deliveries. Click <a href="https://www.canpaydebit.com/" target="_blank">here</a> for details.'
+        document.getElementById('deliveryCanPayMessage').innerHTML = 'Online payments are processed securely through CanPay. Click <a href="https://www.canpaydebit.com/consumer/start/" target="_blank">here</a> to enroll.'
       });
 
       $("#pickupOrder").on("click", function () {
@@ -2171,6 +2170,9 @@
         document.getElementById('cartItemNumber').innerHTML = '(' + cartItems.length + ')';
       }
     });
+
+
+    
   </script>
 </body>
 
