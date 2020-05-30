@@ -1275,12 +1275,12 @@
       </div>
       <!-- Added-To-Cart Modal -->
       <div>
-        <div class="modal" tabindex="-1" role="dialog" id='addedToCartModal'>
+        <div class="modal addToCartModal" tabindex="-1" role="dialog" id='addedToCartModal'>
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-body text-center" id='addedToCartModalTitle'>Item Added!</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close addedToCartCloseButton" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -1816,7 +1816,13 @@
           $('.cashOption').removeClass('hide');
         }
       });
-
+	    
+    $(".addedToCartCloseButton").on("click", function () {
+        $("#productModal").modal('hide')
+      });
+      $('.addToCartModal').on('hidden.bs.modal', function () {
+        $("#productModal").modal('hide')
+      });
       //appends an "active" class to profile when profile button is clicked
       $(".user").on("click", function () {
         document.getElementById('profileModalTitle').innerHTML = 'Profile';
