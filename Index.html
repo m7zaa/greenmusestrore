@@ -420,7 +420,7 @@
       transition: ease-in-out 0.2s;
       opacity: 0;
       visibility: hidden;
-      border-radius: 10px;
+      border-radius: 5px;
       padding: 10px 0;
     }
 
@@ -522,7 +522,7 @@
     .project-menu li a {
       background: #fff none repeat scroll 0 0;
       border: 1px solid #444;
-      border-radius: 20px;
+      border-radius: 5px;
       color: #444;
       cursor: pointer;
       display: inline-block;
@@ -567,26 +567,6 @@
         position: relative;
         z-index: 500;
         /* display: inline-block; */
-        flex-direction: column;
-      }
-    }
-
-    /* Normal desktop :992px. */
-    @media (min-width: 992px) and (max-width: 1169px) {
-      .menu-area {
-        display: inline-block;
-        position: relative;
-        flex-direction: column;
-      }
-    }
-
-    /* small mobile :320px. */
-    @media (max-width: 767px) {
-      .menu-area {
-        padding-top: 80px;
-        position: flex;
-        z-index: 500;
-        display: inline-block;
         flex-direction: column;
       }
 
@@ -719,15 +699,6 @@
         display: flex;
         flex-direction: column;
       }
-	    
-    .quantityForm button {
-        margin: 0;
-        padding: 5px;
-      }
-
-      .productModalContent {
-        position: absolute
-      }
 
       #label-update-city,
       #label-update-first-name {
@@ -738,6 +709,15 @@
     @media (max-width: 992px) {
       #update-state {
         width: 40px;
+      }
+
+      .quantityForm button {
+        margin: 0;
+        padding: 5px;
+      }
+
+      .productModalContent {
+        position: absolute
       }
 
       #label-update-city,
@@ -791,7 +771,7 @@
     button {
       display: inline-block;
       vertical-align: middle;
-      border-radius: 30px;
+      border-radius: 5px;
       margin: 0.2rem;
       font-size: 1rem;
       background: #ffffff;
@@ -809,12 +789,14 @@
       display: inline-block;
       color: black;
       vertical-align: middle;
-      border-radius: 30px;
+      border-radius: 5px;
       margin: 0.2rem;
       font-size: 1rem;
       background: #ffffff;
       border: 1px solid #666666;
     }
+
+
 
     .btn:hover {
       border: 1px solid #666666;
@@ -861,7 +843,7 @@
 
     .btn {
       border: 1px solid #333;
-      border-radius: 20px;
+      border-radius: 5px;
       padding: 10px;
       margin: 3px;
       line-height: 0.5em;
@@ -928,7 +910,6 @@
     .modal-body {
       padding-right: 15%;
       padding-left: 15%;
-      padding-bottom: 15%;
     }
 
     .submit-order {
@@ -1023,10 +1004,66 @@
     #deliveryCanPayMessage {
       color: #008000
     }
-    
+
+    #ageGateModal {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #ageGateImage {
+      width: 70%;
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+
+    #ageGateTitle {
+      font-size: 30px;
+      font-weight: 100;
+    }
+
+    #ageGateTitle {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    #ageGateFooterText {
+      color: gray;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .overAgeButton {
+      background: rgb(142, 185, 8);
+      color: white;
+      border-color: rgb(142, 185, 8);
+      padding: 15px
+    }
+
+    .underAgeButton {
+      background: #DDD;
+      color: white;
+      border-color: #DDD;
+      padding: 15px
+    }
+
+    .overAgeButton:hover {
+      background: rgb(122, 161, 5);
+      border-color: rgb(122, 161, 5);
+
+    }
+
+    .underAgeButton:hover {
+      background: rgb(228, 228, 228);
+      border-color: rgb(228, 228, 228);
+
+    }
+
+    #ageGateContent {
+      padding: 0px
+    }
   </style>
   <script>
-    //**********  CUSTOMIZE THESE VARIABLES *************//
+  //**********  CUSTOMIZE THESE VARIABLES *************//
     const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
     const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb'; //YOUR STORE KEY
     //test webguid key
@@ -1046,7 +1083,7 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex">
       <div class="logo mr-auto">
-        <a href="index.html"><img alt="" class="img-fluid" id="headerImage"></a>
+        <a href="https://gogreenmuse.com/"><img alt="" class="img-fluid" id="headerImage"></a>
       </div>
       <nav class="nav-menu d-lg-block">
         <ul>
@@ -1062,257 +1099,279 @@
   </header><!-- End Header -->
   <main id="main">
     <!-- Main start -->
-    <!-- Product Description Modal -->
-    <div class='modal' tabindex="-1" role="dialog" id="productModal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content productModalContent">
-          <div class="modal-header text-center d-block">
-            <button id='closeproductModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class='modal-body productModalFlex'>
-            <div id='productImg'></div>
-            <div class="productHeader text-center d-block">
-              <h2 class="modal-title" id="productModalTitle"></h2>
-            </div>
-            <div id='productMain'></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Profile Modal -->
-    <div class='modal' tabindex="-1" role="dialog" id="profileModal">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="profileModalTitle"></h2>
-            <button id='closeProfileModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class='modal-body'>
-            <div id='profileMain'>
-              <form method='post' class='edit-contact' id='edit-contact-form'>
-                <div class='form-group'>
-                  <label for='first-name'>First Name </label>
-                  <input id='update-first-name' name='first-name' type='text'>
-                  <label id='label-update-first-name' for='last-name'>Last Name </label>
-                  <input id='update-last-name' name='last-name' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='phone-number'>Phone Number </label>
-                  <input id='update-phone-number' name='phone-number' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='email-address'>Email </label>
-                  <input id='update-email-address' name='email-address' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='street-address1'>Street Address </label>
-                  <input id='update-street-address1' name='street-address1' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='street-address2'>Street Address 2</label>
-                  <input id='update-street-address2' name='street-address2' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='city'>City </label>
-                  <input id='update-city' name='city' type='text'>
-                  <label id='label-update-city' for='state'>State </label>
-                  <input id='update-state' name='state' type='text' value='OR'>
-                </div>
-                <div class='form-group'>
-                  <label for='zip-code'>Zip Code </label>
-                  <input id='update-zip-code' name='zip-code' type='text'>
-                </div>
-                <div class='profileUpdateButtons'>
-                  <button type='button' class='submit-button updateInfo' onclick='updateContactInfo()'>Save</button>
-                  <button type='button' class='submit-button deleteContactInfo' onclick='deleteContactInfo()'>Forget
-                    Me</button>
-                </div>
-              </form>
-              <div class='profileButtons'>
-                <button id='showHistory'>Show Order History</button>
-              </div>
-            </div>
-            <div id='orderHistoryArea' class='hidden'>
-              <table class="table" id='orderHistory'>
-                <thead>
-                  <tr>
-                    <th scope="col">Order #</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Total</th>
-                  </tr>
-                </thead>
-                <tbody id='orderHistoryList'>
-                </tbody>
-              </table>
-              <div class='profileButtons'>
-                <button id='profileBack'>Back</button>
-              </div>
-            </div>
-            <div id='orderHistoryDetailsArea' class='hidden'>
-              <div id='orderHistoryDetails'></div>
-              <div class='profileButtons'>
-                <button id='profileBackToOrderHistory'>Back</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Shopping Cart Modal -->
-    <div class='modal' id='cartModal' tabindex="-1" role="dialog">
-      <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title">Shopping Cart</h2>
-            <button id='closeCartModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div id='shoppingCartItemArea'>
-              <div id='shoppingCartModal'></div>
-              <h5 class='empty-cart'>Your shopping cart is empty</h5>
-              <div class='cartButtons'>
-                <button class='check-out hidden'>Check Out</button>
-              </div>
-            </div>
-            <div id='contactFormArea' class='contactFormArea'>
-              <div id='cartMessage'></div>
-              <div id='checkoutTotal'></div>
-              <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-secondary">
-                  <input type="radio" name="orderOptions" id="pickupOrder" autocomplete="off" value="pickup"
-                    checked>Pickup</label>
-                <label class="btn btn-secondary">
-                  <input type="radio" name="orderOptions" id="deliverOrder" autocomplete="off"
-                    value="delivery">Delivery</label>
-              </div>
-              <p id='deliveryCanPayMessage'></p>
-              <form method='post' class='submit-order' id='submit-order-form'>
-                <div class='form-group'>
-                  <label for='first-name'>First Name </label>
-                  <input id='first-name' name='first-name' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='last-name'>Last Name </label>
-                  <input id='last-name' name='last-name' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='phone-number'>Phone Number </label>
-                  <input id='phone-number' name='phone-number' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='email-address'>Email </label>
-                  <input id='email-address' name='email-address' type='text'>
-                </div>
-                <div class='form-group deliveryDetails hide'>
-                  <label for='street-address1'>Street Address </label>
-                  <input id='street-address1' name='street-address1' type='text'>
-                </div>
-                <div class='form-group deliveryDetails hide'>
-                  <label for='street-address2'>Street Address 2</label>
-                  <input id='street-address2' name='street-address2' type='text'>
-                </div>
-                <div class='form-group deliveryDetails hide'>
-                  <label for='city'>City </label>
-                  <input id='city' name='city' type='text'>
-                </div>
-                <div class='form-group deliveryDetails hide'>
-                  <label for='state'>State </label>
-                  <input id='state' name='state' type='text' value='OR'>
-                </div>
-                <div class='form-group deliveryDetails hide'>
-                  <label for='zip-code'>Zip Code </label>
-                  <input id='zip-code' name='zip-code' type='text'>
-                </div>
-                <div class='form-group'>
-                  <label for='notetoretailer'>Time of pickup or delivery details </label>
-                  <input id='notetoretailer' name='notetoretailer' type='text'>
-                </div>
-                <div class='form-group'>
-                  <input type='checkbox' id='saveContactInfo' name='saveContactInfo'>
-                  <label for='saveContactInfo'>Save Info (Personal devices only)</label>
-                </div>
-                <div class="btn-group btn-group-toggle paymentButtons" data-toggle="buttons">
-                  <label class="btn btn-secondary cashOption">
-                    <input type="radio" name="paymentOptions" id="cashPayment" autocomplete="off" checked='true'> Cash
-                  </label>
-                  <label class="btn btn-secondary canPay hide">
-                    <input type="radio" name="paymentOptions" id="canPayPayment" autocomplete="off"> CanPay
-                  </label>
-                </div>
-                <div class='form-group canPayPin hide'>
-                  <label for='canPayPinInput'>Enter 7-digit CanPay Pin</label>
-                  <input id='canPayPinInput' name='canPayPinInput' type='text'>
-                </div>
-                <div class="cartButtons">
-                  <button type='button' class='submit-order place-order'>Place Order</button>
-                  <button type='button' class='cancel-order'>Cancel Order</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Order-Completed Modal -->
+
+
+    <!-- Age Gate Modal -->
     <div>
-      <div class="modal" tabindex="-1" role="dialog" id='successfulOrderModal'>
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-body" id='successfulOrderModalTitle' text-center>Order Submitted!</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <div class="modal" tabindex="-1" role="dialog" id='ageGateModal'>
+        <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+          <div class="modal-content" id="ageGateContent">
+            <div class="modal-header text-center d-block">
+              <img alt="" class="img-fluid" id="ageGateImage">
+              <h5 class="modal-title" id='ageGateTitle' text-center>AGE VERIFICATION</h5>
+              <div class="modal-footer text-center d-block">
+                <p id="ageGateFooterText">PLEASE VERIFY YOUR AGE TO ENTER.</p>
+                <button type="button" class="btn btn-primary overAgeButton" data-dismiss="modal">I AM 21 OR
+                  OLDER</button>
+                <button type="button" class="btn btn-secondary underAgeButton">I AM UNDER 21</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Product Description Modal -->
+      <div class='modal' tabindex="-1" role="dialog" id="productModal">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content productModalContent">
+            <div class="modal-header text-center d-block">
+              <button id='closeproductModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+            <div class='modal-body productModalFlex'>
+              <div id='productImg'></div>
+              <div class="productHeader text-center d-block">
+                <h2 class="modal-title" id="productModalTitle"></h2>
+              </div>
+              <div id='productMain'></div>
+            </div>
           </div>
         </div>
       </div>
-      <!-- Added-To-Cart Modal -->
+      <!-- Profile Modal -->
+      <div class='modal' tabindex="-1" role="dialog" id="profileModal">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title" id="profileModalTitle"></h2>
+              <button id='closeProfileModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              <div id='profileMain'>
+                <form method='post' class='edit-contact' id='edit-contact-form'>
+                  <div class='form-group'>
+                    <label for='first-name'>First Name </label>
+                    <input id='update-first-name' name='first-name' type='text'>
+                    <label id='label-update-first-name' for='last-name'>Last Name </label>
+                    <input id='update-last-name' name='last-name' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='phone-number'>Phone Number </label>
+                    <input id='update-phone-number' name='phone-number' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='email-address'>Email </label>
+                    <input id='update-email-address' name='email-address' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='street-address1'>Street Address </label>
+                    <input id='update-street-address1' name='street-address1' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='street-address2'>Street Address 2</label>
+                    <input id='update-street-address2' name='street-address2' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='city'>City </label>
+                    <input id='update-city' name='city' type='text'>
+                    <label id='label-update-city' for='state'>State </label>
+                    <input id='update-state' name='state' type='text' value='OR'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='zip-code'>Zip Code </label>
+                    <input id='update-zip-code' name='zip-code' type='text'>
+                  </div>
+                  <div class='profileUpdateButtons'>
+                    <button type='button' class='submit-button updateInfo' onclick='updateContactInfo()'>Save</button>
+                    <button type='button' class='submit-button deleteContactInfo' onclick='deleteContactInfo()'>Forget
+                      Me</button>
+                  </div>
+                </form>
+                <div class='profileButtons'>
+                  <button id='showHistory'>Show Order History</button>
+                </div>
+              </div>
+              <div id='orderHistoryArea' class='hidden'>
+                <table class="table" id='orderHistory'>
+                  <thead>
+                    <tr>
+                      <th scope="col">Order #</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id='orderHistoryList'>
+                  </tbody>
+                </table>
+                <div class='profileButtons'>
+                  <button id='profileBack'>Back</button>
+                </div>
+              </div>
+              <div id='orderHistoryDetailsArea' class='hidden'>
+                <div id='orderHistoryDetails'></div>
+                <div class='profileButtons'>
+                  <button id='profileBackToOrderHistory'>Back</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Shopping Cart Modal -->
+      <div class='modal' id='cartModal' tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title">Shopping Cart</h2>
+              <button id='closeCartModal' type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id='shoppingCartItemArea'>
+                <div id='shoppingCartModal'></div>
+                <h5 class='empty-cart'>Your shopping cart is empty</h5>
+                <div class='cartButtons'>
+                  <button class='check-out hidden'>Check Out</button>
+                </div>
+              </div>
+              <div id='contactFormArea' class='contactFormArea'>
+                <div id='cartMessage'></div>
+                <div id='checkoutTotal'></div>
+                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="orderOptions" id="pickupOrder" autocomplete="off" value="pickup"
+                      checked>Pickup</label>
+                  <label class="btn btn-secondary">
+                    <input type="radio" name="orderOptions" id="deliverOrder" autocomplete="off"
+                      value="delivery">Delivery</label>
+                </div>
+                <p id='deliveryCanPayMessage'></p>
+                <form method='post' class='submit-order' id='submit-order-form'>
+                  <div class='form-group'>
+                    <label for='first-name'>First Name </label>
+                    <input id='first-name' name='first-name' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='last-name'>Last Name </label>
+                    <input id='last-name' name='last-name' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='phone-number'>Phone Number </label>
+                    <input id='phone-number' name='phone-number' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='email-address'>Email </label>
+                    <input id='email-address' name='email-address' type='text'>
+                  </div>
+                  <div class='form-group deliveryDetails hide'>
+                    <label for='street-address1'>Street Address </label>
+                    <input id='street-address1' name='street-address1' type='text'>
+                  </div>
+                  <div class='form-group deliveryDetails hide'>
+                    <label for='street-address2'>Street Address 2</label>
+                    <input id='street-address2' name='street-address2' type='text'>
+                  </div>
+                  <div class='form-group deliveryDetails hide'>
+                    <label for='city'>City </label>
+                    <input id='city' name='city' type='text'>
+                  </div>
+                  <div class='form-group deliveryDetails hide'>
+                    <label for='state'>State </label>
+                    <input id='state' name='state' type='text' value='OR'>
+                  </div>
+                  <div class='form-group deliveryDetails hide'>
+                    <label for='zip-code'>Zip Code </label>
+                    <input id='zip-code' name='zip-code' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <label for='notetoretailer'>Notes </label>
+                    <input id='notetoretailer' name='notetoretailer' type='text'>
+                  </div>
+                  <div class='form-group'>
+                    <input type='checkbox' id='saveContactInfo' name='saveContactInfo'>
+                    <label for='saveContactInfo'>Save Info (Personal devices only)</label>
+                  </div>
+                  <div class="btn-group btn-group-toggle paymentButtons" data-toggle="buttons">
+                    <label class="btn btn-secondary cashOption">
+                      <input type="radio" name="paymentOptions" id="cashPayment" autocomplete="off" checked='true'> Cash
+                    </label>
+                    <label class="btn btn-secondary canPay hide">
+                      <input type="radio" name="paymentOptions" id="canPayPayment" autocomplete="off"> CanPay
+                    </label>
+                  </div>
+                  <div class='form-group canPayPin hide'>
+                    <label for='canPayPinInput'>Enter 7-digit CanPay Pin</label>
+                    <input id='canPayPinInput' name='canPayPinInput' type='text'>
+                  </div>
+                  <div class="cartButtons">
+                    <button type='button' class='submit-order place-order'>Place Order</button>
+                    <button type='button' class='cancel-order'>Cancel Order</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Order-Completed Modal -->
       <div>
-        <div class="modal addToCartModal" tabindex="-1" role="dialog" id='addedToCartModal'>
+        <div class="modal" tabindex="-1" role="dialog" id='successfulOrderModal'>
           <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-body text-center" id='addedToCartModalTitle'>Item Added!</h5>
-                <button type="button" class="close addedToCartCloseButton" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-body" id='successfulOrderModalTitle' text-center>Order Submitted!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <!-- ======= Menu Section ======= -->
-        <div id="menu" class="menu-area area-padding">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: auto">
-                <div class="section-headline text-center">
-                  <div id='menuCopy'></div>
+        <!-- Added-To-Cart Modal -->
+        <div>
+          <div class="modal addToCartModal" tabindex="-1" role="dialog" id='addedToCartModal'>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-body text-center" id='addedToCartModalTitle'>Item Added!</h5>
+                  <button type="button" class="close addedToCartCloseButton" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
               </div>
-            </div>
-            <div class="row wesome-project-1 fix">
-              <!-- Start Menu -page -->
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div>
-                  <ul class="project-menu" id="product-menu-ul"></ul>
-                </div>
-              </div>
-            </div>
-            <div id="menuBody">
             </div>
           </div>
+          <!-- ======= Menu Section ======= -->
+          <div id="menu" class="menu-area area-padding">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="height: auto">
+                  <div class="section-headline text-center">
+                    <div id='menuCopy'></div>
+                  </div>
+                </div>
+              </div>
+              <div class="row wesome-project-1 fix">
+                <!-- Start Menu -page -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div>
+                    <ul class="project-menu" id="product-menu-ul"></ul>
+                  </div>
+                </div>
+              </div>
+              <div id="menuBody">
+              </div>
+            </div>
+          </div>
+          <!-- End Menu Section -->
         </div>
-        <!-- End Menu Section -->
-      </div>
-      <div>
-      </div>
+        <div>
+        </div>
   </main><!-- End #main -->
   <script>
     var resp = [];
@@ -1329,8 +1388,8 @@
       let urlParams = new URLSearchParams(window.location.search);
       if (urlParams.has('product')) {
         const productId = urlParams.get('product');
-        $("#productModal").modal('show')
-        populateProductModal(productId)
+        $("#productModal").modal('show');
+        populateProductModal(productId);
       }
     }
 
@@ -1486,6 +1545,7 @@
       }
 
     }
+
     function deleteContactInfo() {
       localStorage.clear();
       location.reload(true);
@@ -1652,6 +1712,7 @@
         }
       });
     }
+
     function updateOrder(obj, amount) {
       $('#addedToCartModal').modal('show');
       let price = '';
@@ -1796,17 +1857,23 @@
     }
 
     $(document).ready(function () {
-      document.getElementById('headerImage').setAttribute('src', headerImage)
+      document.getElementById('headerImage').setAttribute('src', headerImage);
+      document.getElementById('ageGateImage').setAttribute('src', ageGateImage);
+      $('#ageGateModal').modal({ backdrop: 'static', keyboard: false })
       if (turnOnOnlineOrdering) {
         $('#profileMenu, #cartInHeader').removeClass('hidden');
       }
+
+      $('.underAgeButton').on('click', function () {
+        location.reload(true);
+      });
 
       $("#deliverOrder").on("click", function () {
         if ($('#deliverOrder').is(':checked')) {
           $('#canPayPayment').click();
           $('.cashOption').addClass('hide');
         }
-        document.getElementById('deliveryCanPayMessage').innerHTML = 'Online payments are processed securely through CanPay. Click <a href="https://www.canpaydebit.com/consumer/start/" target="_blank">here</a> to enroll.'
+        document.getElementById('deliveryCanPayMessage').innerHTML = 'CanPay must be used for all deliveries. Click <a href="https://www.canpaydebit.com/" target="_blank">here</a> for details.'
       });
 
       $("#pickupOrder").on("click", function () {
@@ -1816,8 +1883,7 @@
           $('.cashOption').removeClass('hide');
         }
       });
-	    
-    $(".addedToCartCloseButton").on("click", function () {
+      $(".addedToCartCloseButton").on("click", function () {
         $("#productModal").modal('hide')
       });
       $('.addToCartModal').on('hidden.bs.modal', function () {
@@ -2176,9 +2242,6 @@
         document.getElementById('cartItemNumber').innerHTML = '(' + cartItems.length + ')';
       }
     });
-
-
-    
   </script>
 </body>
 
