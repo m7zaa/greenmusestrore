@@ -1243,7 +1243,7 @@
                       checked>Pickup</label>
                   <label class="btn btn-secondary">
                     <input type="radio" name="orderOptions" id="deliverOrder" autocomplete="off"
-                      value="delivery">Delivery Unavailible</label>
+                      value="delivery">Delivery</label>
                 </div>
                 <p id='deliveryCanPayMessage'></p>
                 <form method='post' class='submit-order' id='submit-order-form'>
@@ -1868,7 +1868,7 @@
           $('#canPayPayment').click();
           $('.cashOption').addClass('hide');
         }
-        document.getElementById('deliveryCanPayMessage').innerHTML = 'Delivery will be back available Tuesday 8/18. CanPay must be used for all deliveries. Click <a href="https://www.canpaydebit.com/consumer/enroll/" target="_blank">here</a> for details.'
+        document.getElementById('deliveryCanPayMessage').innerHTML = 'Click <a href="https://www.canpaydebit.com/consumer/enroll/" target="_blank">here</a> for details.'
       });
 
       $("#pickupOrder").on("click", function () {
