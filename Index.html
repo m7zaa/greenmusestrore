@@ -999,6 +999,14 @@
       color: #008000
     }
 
+      #deliveryFeeMessage {
+      margin-top: 15px
+    }
+
+    #deliveryFeeMessage {
+      color: red;
+    }
+    
     #ageGateModal {
       display: flex;
       flex-direction: column;
@@ -1068,6 +1076,7 @@
     const turnOnOnlineOrdering = true;  //NOT YET IMPLEMENTED
     //Turn on/off CanPay Payment functionality
     const useCanPay = true;
+    const deliveryFee = 5.50.toFixed(2);
         //**********  CUSTOMIZE THESE VARIABLES *************//
   </script>
   <script src='https://use.fontawesome.com/releases/v5.13.0/js/all.js' data-auto-replace-svg='nest'></script>
@@ -1245,6 +1254,8 @@
                     <input type="radio" name="orderOptions" id="deliverOrder" autocomplete="off"
                       value="delivery">Delivery</label>
                 </div>
+                                <p id='deliveryFeeMessage'></p>
+                
                 <p id='deliveryCanPayMessage'></p>
                 <form method='post' class='submit-order' id='submit-order-form'>
                   <div class='form-group'>
@@ -1616,6 +1627,9 @@
         zipCode = '_';
       }
       if ($('#canPayPayment').is(':checked')) {
+      if ($('#deliverOrder').is(':checked')) {
+          cartTotal = (cartTotal + deliveryFee);
+        }
         orderSubmission = JSON.stringify({
           'notetoretailer': noteToRetailer,
           'webguid': webguid,
@@ -1868,11 +1882,18 @@
           $('#canPayPayment').click();
           $('.cashOption').addClass('hide');
         }
+        
+        document.getElementById('deliveryFeeMessage').innerHTML = 'A fee of $' + deliveryFee + ' was added to your delivery order.'
         document.getElementById('deliveryCanPayMessage').innerHTML = 'CanPay must be used for all deliveries. Click <a href="https://www.canpaydebit.com/consumer/enroll/" target="_blank">here</a> for details.'
+     
       });
 
       $("#pickupOrder").on("click", function () {
+        getCartTotal();
+        checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + cartTotal.toFixed(2);
+        document.getElementById('deliveryFeeMessage').innerHTML = '';
         document.getElementById('deliveryCanPayMessage').innerHTML = '';
+        
         if ($('#pickupOrder').is(':checked')) {
           $('#cashPayment').click();
           $('.cashOption').removeClass('hide');
@@ -2114,7 +2135,11 @@
         $('.contactFormArea').removeClass('hidden');
         $('.cartButtons, #shoppingCartItemArea').addClass('hidden');
         const checkoutTotal = document.getElementById('checkoutTotal');
-        checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + cartTotal;
+        if ($('#deliverOrder').is(':checked')) {
+          cartTotal = cartTotal + deliveryFee;
+        }
+        checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + cartTotal.toFixed(2);
+
       });
       if (turnOnOnlineOrdering) {
         //Check local storage for items in shopping cart. If there are none, it sets shoppingCart = []
@@ -2149,6 +2174,8 @@
           if (this.checked && this.value == 'delivery') {
             $('.deliveryDetails').removeClass('hide');
             orderOption = 'Delivery';
+            checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + (cartTotal + deliveryFee).toFixed(2);
+
           }
           if (this.checked && this.value == 'pickup') {
             $('.deliveryDetails').addClass('hide');
