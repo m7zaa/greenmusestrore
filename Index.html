@@ -2203,8 +2203,8 @@
 
         resp[0].forEach(item => {
           //if category hasn't been added and there is inventory in the FrontRoom, this will create new div/header and add category to categoryArray
-          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'FLOWER ' || item.category === 'Non-Infused (Plain) Pre-Roll' || item.category === 'Infused Pre-Roll' || item.category === 'VAPE CARTS' || item.category === 'EDIBLES' || item.category === 'EXTRACTS' || item.category === 'TINCTURES' || item.category === 'KIEF/HASH' || item.category === 'TOPICALS' || item.category === 'VAPE CARTS ' || item.category === 'EXTRACTS ')) {
-            categoryArray.push(item.category);
+          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'GREEN HOP' || item.category === 'GREEN JAZZ' || item.category === 'GREEN BLUES' || item.category === 'GREEN FUNK'|| item.category === 'GREEN SOUL'|| item.category === 'GREEN ROCK'|| item.category === 'GREEN POP')) {
+          categoryArray.push(item.category);
             let categoryType = document.createElement('div');
             let categoryWithoutSpecialCharacters = item.category.replace(/[^A-Z0-9]/ig, '_');
             categoryType.setAttribute('id', categoryWithoutSpecialCharacters);
