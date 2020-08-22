@@ -17,7 +17,7 @@
     /*--------------------------------------------------------------
       # General
       --------------------------------------------------------------*/
-      html,
+    html,
     body {
       height: auto;
     }
@@ -413,7 +413,7 @@
       transition: ease-in-out 0.2s;
       opacity: 0;
       visibility: hidden;
-      border-radius: 10px;
+      border-radius: 5px;
       padding: 10px 0;
     }
 
@@ -490,7 +490,6 @@
       color: #fff;
     }
 
-
     /*--------------------------------------------------------------
       # Menu
       --------------------------------------------------------------*/
@@ -557,7 +556,7 @@
     /* small mobile :320px. */
     @media (max-width: 767px) {
       .menu-area {
-        padding-top: 80px;
+        padding-top: 0px;
         position: relative;
         z-index: 500;
         /* display: inline-block; */
@@ -1004,7 +1003,7 @@
     }
 
     #deliveryFeeMessage {
-      color: black;
+      color: red;
     }
 
     #ageGateModal {
@@ -1065,7 +1064,6 @@
     }
   </style>
   <script>
-    
     //**********  CUSTOMIZE THESE VARIABLES *************//
     const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
     const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb'; //YOUR STORE KEY
@@ -1079,7 +1077,6 @@
     const useCanPay = true;
     const deliveryFee = 5;
         //**********  CUSTOMIZE THESE VARIABLES *************//
-
   </script>
   <script src='https://use.fontawesome.com/releases/v5.13.0/js/all.js' data-auto-replace-svg='nest'></script>
 </head>
@@ -2206,7 +2203,8 @@
 
         resp[0].forEach(item => {
           //if category hasn't been added and there is inventory in the FrontRoom, this will create new div/header and add category to categoryArray
-          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'GREEN HOP' || item.category === 'GREEN JAZZ' || item.category === 'GREEN BLUES' || item.category === 'GREEN FUNK'|| item.category === 'GREEN SOUL'|| item.category === 'GREEN ROCK'|| item.category === 'GREEN POP')) {            categoryArray.push(item.category);
+          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'FLOWER ' || item.category === 'Non-Infused (Plain) Pre-Roll' || item.category === 'Infused Pre-Roll' || item.category === 'VAPE CARTS' || item.category === 'EDIBLES' || item.category === 'EXTRACTS' || item.category === 'TINCTURES' || item.category === 'KIEF/HASH' || item.category === 'TOPICALS' || item.category === 'VAPE CARTS ' || item.category === 'EXTRACTS ')) {
+            categoryArray.push(item.category);
             let categoryType = document.createElement('div');
             let categoryWithoutSpecialCharacters = item.category.replace(/[^A-Z0-9]/ig, '_');
             categoryType.setAttribute('id', categoryWithoutSpecialCharacters);
