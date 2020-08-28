@@ -6,6 +6,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
@@ -1062,6 +1065,25 @@
     #ageGateContent {
       padding: 0px
     }
+
+    .scrollable-menu {
+      height: auto;
+      max-height: 200px;
+      overflow-x: hidden;
+    }
+
+    #todayDate {
+      margin-right: 10px;
+      font-weight: bold
+    }
+
+    .pickupTimes {
+      margin-bottom: 15px
+    }
+
+    .orderOptions {
+      margin-bottom: 5px
+    }
   </style>
   <script>
     //**********  CUSTOMIZE THESE VARIABLES *************//
@@ -1071,12 +1093,12 @@
     // const webguid = '9e8d4cd4-bb09-4dd2-9bc8-39eaf7ade324';
     const headerImage = "https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/04/cropped-GREEN_MUSE_LOGO_VERSION_2.png?w=1366&ssl=1"; //Image in header
     const ageGateImage = "https://gogreenmuse.com/wp-content/uploads/2020/04/GREEN_MUSE_LOGO_VERSION_1.png"
- const defaultMenuImage = 'https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/05/StoreStockPhoto.jpeg?ssl=1&resize=438%2C438'; //DEFAULT MENU IMAGE
+    const defaultMenuImage = 'https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/05/StoreStockPhoto.jpeg?ssl=1&resize=438%2C438'; //DEFAULT MENU IMAGE
     const turnOnOnlineOrdering = true;  //NOT YET IMPLEMENTED
     //Turn on/off CanPay Payment functionality
     const useCanPay = true;
     const deliveryFee = 5.50
-    
+
 
         //**********  CUSTOMIZE THESE VARIABLES *************//
   </script>
@@ -1247,7 +1269,7 @@
               <div id='contactFormArea' class='contactFormArea'>
                 <div id='cartMessage'></div>
                 <div id='checkoutTotal'></div>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle orderOptions" data-toggle="buttons">
                   <label class="btn btn-secondary">
                     <input type="radio" name="orderOptions" id="pickupOrder" autocomplete="off" value="pickup"
                       checked>Pickup</label>
@@ -1256,7 +1278,7 @@
                       value="delivery">Delivery</label>
                 </div>
                 <p id='deliveryFeeMessage'></p>
-
+                <p id='deliveryMinMessage'></p>
                 <p id='deliveryCanPayMessage'></p>
                 <form method='post' class='submit-order' id='submit-order-form'>
                   <div class='form-group'>
@@ -1303,17 +1325,51 @@
                     <input type='checkbox' id='saveContactInfo' name='saveContactInfo'>
                     <label for='saveContactInfo'>Save Info (Personal devices only)</label>
                   </div>
-                  <div class="btn-group btn-group-toggle paymentButtons" data-toggle="buttons">
-                    <label class="btn btn-secondary cashOption">
-                      <input type="radio" name="paymentOptions" id="cashPayment" autocomplete="off" checked='true'> Cash
-                    </label>
-                    <label class="btn btn-secondary canPay hide">
-                      <input type="radio" name="paymentOptions" id="canPayPayment" autocomplete="off"> CanPay
-                    </label>
+                  <div id='pickupTimeLabel'>
+                    <p>Pickup Time</p>
+                    <p id='todayDate'></p>
                   </div>
-                  <div class='form-group canPayPin hide'>
-                    <label for='canPayPinInput'>Enter 7-digit CanPay Pin</label>
-                    <input id='canPayPinInput' name='canPayPinInput' type='text'>
+                  <div class='btn-group pickupTimes hide'>
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                      data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span id="selected">--</span><span class="caret"></span>
+                    </button>
+                    <div class="dropdown-menu scrollable-menu pickupTimeMenu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item 11" href="#">11a-11:30a</a>
+                      <a class="dropdown-item 11-5" href="#">11:30a-12p</a>
+                      <a class="dropdown-item 12" href="#">12:30p-12:30p</a>
+                      <a class="dropdown-item 12-5" href="#">12:30p-1:00p</a>
+                      <a class="dropdown-item 13" href="#">1:00p-1:30p</a>
+                      <a class="dropdown-item 13-5" href="#">1:30p-2:00p</a>
+                      <a class="dropdown-item 14" href="#">2:00p-2:30p</a>
+                      <a class="dropdown-item 14-5" href="#">2:30p-3:00p</a>
+                      <a class="dropdown-item 15" href="#">3:00p-3:30p</a>
+                      <a class="dropdown-item 15-5" href="#">3:30p-4:00p</a>
+                      <a class="dropdown-item 16" href="#">4:00p-4:30p</a>
+                      <a class="dropdown-item 16-5" href="#">4:30p-5:00p</a>
+                      <a class="dropdown-item 17" href="#">5:00p-5:30p</a>
+                      <a class="dropdown-item 17-5" href="#">5:30p-6:00p</a>
+                      <a class="dropdown-item 18" href="#">6:00p-6:30p</a>
+                      <a class="dropdown-item 18-5" href="#">6:30p-7:00p</a>
+                      <a class="dropdown-item 19" href="#">7:00p-7:30p</a>
+                      <a class="dropdown-item 19-5" href="#">7:30p-8:00p</a>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="btn-group btn-group-toggle paymentButtons" data-toggle="buttons">
+                      <label class="btn btn-secondary cashOption">
+                        <input type="radio" name="paymentOptions" id="cashPayment" autocomplete="off" checked='true'>
+                        Cash
+                      </label>
+                      <label class="btn btn-secondary canPay hide">
+                        <input type="radio" name="paymentOptions" id="canPayPayment" autocomplete="off"> CanPay
+                      </label>
+                    </div>
+
+                    <div class='form-group canPayPin hide'>
+                      <label for='canPayPinInput'>Enter 7-digit CanPay Pin</label>
+                      <input id='canPayPinInput' name='canPayPinInput' type='text'>
+                    </div>
                   </div>
                   <div class="cartButtons">
                     <button type='button' class='submit-order place-order'>Place Order</button>
@@ -1390,6 +1446,7 @@
     let contactInfo = [];
     let orderHistory = [];
     let orderOption = 'Pickup';
+    let pickupTimeSelection = '';
 
     function redirectToProductModal() {
       let urlParams = new URLSearchParams(window.location.search);
@@ -1616,8 +1673,7 @@
       let state = $('input#state').val();
       let zipCode = $('input#zip-code').val();
       let canPayPin = $('input#canPayPinInput').val();
-      let noteToRetailer = orderOption + ', Note: ' + $('input#notetoretailer').val();
-      contactInfo = [];
+      let noteToRetailer = orderOption + ' ' + pickupTimeSelection + ', Note: ' + $('input#notetoretailer').val(); contactInfo = [];
       let orderSubmission;
       contactInfo.push({ 'firstName': firstName, 'lastName': lastName, 'phoneNumber': phoneNumber, 'email': email, 'streetAddress1': streetAddress1, 'streetAddress2': streetAddress2, 'city': city, 'state': state, 'zipCode': zipCode, 'phone': phoneNumber, 'email': email });
       if (orderOption === 'Pickup') {
@@ -2121,7 +2177,7 @@
       });
 
       $('.place-order').on('click', function () {
-        if ((orderOption === 'Pickup' && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0) || (orderOption === 'Delivery' && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0 && $('input#street-address1').val().length != 0 && $('input#city').val().length != 0 && $('input#state').val().length != 0 && $('input#zip-code').val().length != 0)) {
+        if ((orderOption === 'Pickup' && (pickupTimeSelection.length > 4) && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0) || (orderOption === 'Delivery' && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0 && $('input#street-address1').val().length != 0 && $('input#city').val().length != 0 && $('input#state').val().length != 0 && $('input#zip-code').val().length != 0)) {
           submitOrder();
         } else {
           $("#cartMessage").append("<p>Complete Order Form Before Submitting</p>");
@@ -2129,6 +2185,75 @@
       });
 
       $('.check-out').on('click', function () {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var todayDate = mm + '/' + dd + '/' + yyyy;
+        var currentHour = today.getHours();
+        var currentMinutes = today.getMinutes();
+
+        if (currentMinutes > 29) {
+          currentHour = today.getHours() + '.5';
+        }
+        document.getElementById('todayDate').innerHTML = todayDate;
+        if (currentHour >= 11) {
+          $('.11, .11-5').addClass('disabled');
+          if (currentHour >= 11.5) {
+            $('.12').addClass('disabled');
+            if (currentHour >= 12) {
+              $('.12-5').addClass('disabled');
+              if (currentHour >= 12.5) {
+                $('.13').addClass('disabled');
+                if (currentHour >= 13) {
+                  $('.13-5').addClass('disabled');
+                  if (currentHour >= 13.5) {
+                    $('.14').addClass('disabled');
+                    if (currentHour >= 14) {
+                      $('.14-5').addClass('disabled');
+                      if (currentHour >= 14.5) {
+                        $('.15').addClass('disabled');
+                        if (currentHour >= 15) {
+                          $('.15-5').addClass('disabled');
+                          if (currentHour >= 15.5) {
+                            $(' .16').addClass('disabled');
+                            if (currentHour >= 16) {
+                              $('.16-5').addClass('disabled');
+                              if (currentHour >= 16.5) {
+                                $('.17').addClass('disabled');
+                                if (currentHour >= 17) {
+                                  $('.17-5').addClass('disabled');
+                                  if (currentHour >= 17.5) {
+                                    $('.18').addClass('disabled');
+                                    if (currentHour >= 18) {
+                                      $('.18-5').addClass('disabled');
+                                      if (currentHour >= 18.5) {
+                                        $('.19').addClass('disabled');
+                                        if (currentHour >= 19) {
+                                          $('.19-5').addClass('disabled');
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        $('.pickupTimeMenu a').click(function () {
+          $('#selected').text($(this).text());
+          pickupTimeSelection = $('#selected').text();
+        });
+
+        $('.pickupTimes').removeClass('hide');
         document.getElementById('cartMessage').innerHTML = '';
         $('.contactFormArea').removeClass('hidden');
         $('.cartButtons, #shoppingCartItemArea').addClass('hidden');
@@ -2170,12 +2295,29 @@
       $('input:radio[name="orderOptions"]').change(
         function () {
           if (this.checked && this.value == 'delivery') {
-            $('.deliveryDetails').removeClass('hide');
-            orderOption = 'Delivery';
-            checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + (cartTotal + deliveryFee).toFixed(2);
+            $('.pickupTimes').addClass('hide');
+            if (!(cartTotal < 55)) {
+              $('#deliveryFeeMessage').removeClass('hidden');
+              $('#deliveryCanPayMessage').removeClass('hidden');
+              $('#deliveryMinMessage').addClass('hidden');
 
+              $('.deliveryDetails').removeClass('hide');
+              orderOption = 'Delivery';
+              checkoutTotal.innerHTML = '<strong>Order Total</strong> $' + (cartTotal + deliveryFee).toFixed(2);
+            }
+            else {
+              $('#deliveryMinMessage').removeClass('hidden');
+              document.getElementById('deliveryMinMessage').innerHTML = '$55 minimum for deliveries'
+              $('#deliveryFeeMessage').addClass('hidden');
+              $('#deliveryCanPayMessage').addClass('hidden');
+              $('.submit-order').addClass('hide');
+            }
           }
           if (this.checked && this.value == 'pickup') {
+            $('#deliveryMinMessage').addClass('hidden');
+
+            $('.submit-order').removeClass('hide');
+            $('.pickupTimes').removeClass('hide');
             $('.deliveryDetails').addClass('hide');
             orderOption = 'Pickup';
           }
@@ -2205,8 +2347,8 @@
 
         resp[0].forEach(item => {
           //if category hasn't been added and there is inventory in the FrontRoom, this will create new div/header and add category to categoryArray
-          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'GREEN HOP' || item.category === 'GREEN JAZZ' || item.category === 'GREEN BLUES' || item.category === 'GREEN FUNK'|| item.category === 'GREEN SOUL'|| item.category === 'GREEN ROCK'|| item.category === 'GREEN POP')) {
-          categoryArray.push(item.category);
+          if (!categoryArray.includes(item.category) && item.roomInventory.FrontRoom >= 1 && (item.category === 'GREEN HOP' || item.category === 'GREEN JAZZ' || item.category === 'GREEN BLUES' || item.category === 'GREEN FUNK' || item.category === 'GREEN SOUL' || item.category === 'GREEN ROCK' || item.category === 'GREEN POP')) {
+            categoryArray.push(item.category);
             let categoryType = document.createElement('div');
             let categoryWithoutSpecialCharacters = item.category.replace(/[^A-Z0-9]/ig, '_');
             categoryType.setAttribute('id', categoryWithoutSpecialCharacters);
