@@ -1088,7 +1088,8 @@
   <script>
     //**********  CUSTOMIZE THESE VARIABLES *************//
     const ocpApimSubscriptionKey = 'fdd8b8e65ab54449bbf89c92dfd0f495'; //YOUR DEVELOPER KEY
-    const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb'; //YOUR STORE KEY
+    //YOUR STORE KEY
+    const webguid = 'fc31f983-cde8-4d11-98f8-83936ca582eb';
     //test webguid key
     // const webguid = '9e8d4cd4-bb09-4dd2-9bc8-39eaf7ade324';
     const headerImage = "https://i2.wp.com/gogreenmuse.com/wp-content/uploads/2020/04/cropped-GREEN_MUSE_LOGO_VERSION_2.png?w=1366&ssl=1"; //Image in header
@@ -1332,27 +1333,27 @@
                   <div class='btn-group pickupTimes hide'>
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span id="selected">--</span><span class="caret"></span>
+                      <span id="selected">Choose a delivery time</span><span class="caret"></span>
                     </button>
                     <div class="dropdown-menu scrollable-menu pickupTimeMenu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item 11" href="#">11a-11:30a</a>
-                      <a class="dropdown-item 11-5" href="#">11:30a-12p</a>
-                      <a class="dropdown-item 12" href="#">12:30p-12:30p</a>
-                      <a class="dropdown-item 12-5" href="#">12:30p-1:00p</a>
-                      <a class="dropdown-item 13" href="#">1:00p-1:30p</a>
-                      <a class="dropdown-item 13-5" href="#">1:30p-2:00p</a>
-                      <a class="dropdown-item 14" href="#">2:00p-2:30p</a>
-                      <a class="dropdown-item 14-5" href="#">2:30p-3:00p</a>
-                      <a class="dropdown-item 15" href="#">3:00p-3:30p</a>
-                      <a class="dropdown-item 15-5" href="#">3:30p-4:00p</a>
-                      <a class="dropdown-item 16" href="#">4:00p-4:30p</a>
-                      <a class="dropdown-item 16-5" href="#">4:30p-5:00p</a>
-                      <a class="dropdown-item 17" href="#">5:00p-5:30p</a>
-                      <a class="dropdown-item 17-5" href="#">5:30p-6:00p</a>
-                      <a class="dropdown-item 18" href="#">6:00p-6:30p</a>
-                      <a class="dropdown-item 18-5" href="#">6:30p-7:00p</a>
-                      <a class="dropdown-item 19" href="#">7:00p-7:30p</a>
-                      <a class="dropdown-item 19-5" href="#">7:30p-8:00p</a>
+                      <a class="dropdown-item 11">11:00a-11:30a</a>
+                      <a class="dropdown-item 11-5">11:30a-12:00p</a>
+                      <a class="dropdown-item 12">12:00p-12:30p</a>
+                      <a class="dropdown-item 12-5">12:30p-1:00p</a>
+                      <a class="dropdown-item 13">1:00p-1:30p</a>
+                      <a class="dropdown-item 13-5">1:30p-2:00p</a>
+                      <a class="dropdown-item 14">2:00p-2:30p</a>
+                      <a class="dropdown-item 14-5">2:30p-3:00p</a>
+                      <a class="dropdown-item 15">3:00p-3:30p</a>
+                      <a class="dropdown-item 15-5">3:30p-4:00p</a>
+                      <a class="dropdown-item 16">4:00p-4:30p</a>
+                      <a class="dropdown-item 16-5">4:30p-5:00p</a>
+                      <a class="dropdown-item 17">5:00p-5:30p</a>
+                      <a class="dropdown-item 17-5">5:30p-6:00p</a>
+                      <a class="dropdown-item 18">6:00p-6:30p</a>
+                      <a class="dropdown-item 18-5">6:30p-7:00p</a>
+                      <a class="dropdown-item 19">7:00p-7:30p</a>
+                      <a class="dropdown-item 19-5">7:30p-8:00p</a>
                     </div>
                   </div>
                   <div>
@@ -2177,7 +2178,7 @@
       });
 
       $('.place-order').on('click', function () {
-        if ((orderOption === 'Pickup' && (pickupTimeSelection.length > 4) && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0) || (orderOption === 'Delivery' && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0 && $('input#street-address1').val().length != 0 && $('input#city').val().length != 0 && $('input#state').val().length != 0 && $('input#zip-code').val().length != 0)) {
+        if ((orderOption === 'Pickup' && pickupTimeSelection.length > 0 && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0) || (orderOption === 'Delivery' && $('input#first-name').val().length != 0 && $('input#last-name').val().length != 0 && $('input#phone-number').val().length != 0 && $('input#email-address').val().length != 0 && $('input#street-address1').val().length != 0 && $('input#city').val().length != 0 && $('input#state').val().length != 0 && $('input#zip-code').val().length != 0)) {
           submitOrder();
         } else {
           $("#cartMessage").append("<p>Complete Order Form Before Submitting</p>");
@@ -2295,7 +2296,7 @@
       $('input:radio[name="orderOptions"]').change(
         function () {
           if (this.checked && this.value == 'delivery') {
-            $('.pickupTimes').addClass('hide');
+            $('.pickupTimes, #pickupTimeLabel').addClass('hide');
             if (!(cartTotal < 55)) {
               $('#deliveryFeeMessage').removeClass('hidden');
               $('#deliveryCanPayMessage').removeClass('hidden');
@@ -2317,7 +2318,7 @@
             $('#deliveryMinMessage').addClass('hidden');
 
             $('.submit-order').removeClass('hide');
-            $('.pickupTimes').removeClass('hide');
+            $('.pickupTimes, #pickupTimeLabel').removeClass('hide');
             $('.deliveryDetails').addClass('hide');
             orderOption = 'Pickup';
           }
